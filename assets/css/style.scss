@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+/* 共通設定 */
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.ly_bg {
+  overflow-x: hidden;
+}
+
+.ly_bg::-webkit-scrollbar {
+  display: none;
+}
+
+.ps_r {
+  position: relative;
+}
+.ps_a_01 {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  img {
+    width: 100%;
+  }
+}
+.ps_a_02 {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  img {
+    width: 100%;
+  }
+}
+.ps_a_03 {
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  img {
+    width: 100%;
+  }
+}
+.ps_a_04 {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  &.bl_link {
+    width: 60%;
+    font-family: kozuka-gothic-pr6n, sans-serif;
+    font-size: 12px;
+    color: #465167;
+    display: flex;
+    justify-content: space-between;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .ly_bg {
+    background: url(../images/bg.png)no-repeat top center fixed;
+    background-size: cover;
+    padding: 60px 0;
+  }
+
+  .ly_mainArea {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 0 24px rgba(29,135,143,0.32);
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ly_fixArea {
+    width: 40%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .fixArea_logo {
+    max-width: 300px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
+  .fixArea_txt {
+    max-width: 330px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  .ly_mainArea {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    left: 40%;
+    top: 0;
+    transform: none;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 0 24px rgba(29,135,143,0.32);
+    overflow: hidden;
+  }
+
+  .ly_qrArea {
+    width: calc(50% - 400px);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  .ly_qrArea img {
+    max-width: 155px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ly_fixArea {
+    width: 50%;
+  }
+
+  .ly_mainArea {
+    left: 50%;
+  }
+}
+
+.pc {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .pc {
+    display: block;
+  }
+}
