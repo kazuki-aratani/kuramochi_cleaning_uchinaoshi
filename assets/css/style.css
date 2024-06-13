@@ -60,18 +60,24 @@ a:hover {
 
 .ps_a_04 {
   position: absolute;
-  bottom: 30%;
+  bottom: 26%;
   left: 50%;
   transform: translateX(-50%);
   width: 85%;
 }
 .ps_a_04.bl_link {
-  width: 60%;
+  width: 72%;
   font-family: kozuka-gothic-pr6n, sans-serif;
   font-size: 12px;
-  color: #465167;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  row-gap: 15px;
+}
+.ps_a_04.bl_link a {
+  width: 42%;
+  color: #333;
 }
 .ps_a_04 img {
   width: 100%;

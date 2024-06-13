@@ -449,7 +449,7 @@ input[type="image"] {
   color: #333;
   line-height: 1.7;
   position: absolute;
-  top: 60%;
+  top: 63.5%;
   transform: translateY(-50%);
 }
 
@@ -462,15 +462,17 @@ input[type="image"] {
   width: 100%;
   padding: 0 15px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  column-gap: 40px;
+  row-gap: 15px;
   position: absolute;
-  bottom: 10%;
+  bottom: 9%;
   box-sizing: border-box;
 }
 
 .sec16_underLink a {
+  width: 34%;
   color: #333;
 }
 
