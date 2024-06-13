@@ -386,6 +386,25 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  transition: height 0.1s ease-in-out;
+}
+.sec15_form.height-expanded {
+  height: 420px;
+}
+@media screen and (max-width: 630px) {
+  .sec15_form.height-expanded {
+    height: 500px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sec15_form.height-expanded {
+    height: 450px;
+  }
+}
+@media screen and (max-width: 415px) {
+  .sec15_form.height-expanded {
+    height: 420px;
+  }
 }
 
 .reqBox {
@@ -394,8 +413,20 @@ a:hover {
 
 .select_155,.select_195 {
   width: 100%;
+  display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.select-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.select-container.show {
+  display: block;
+  opacity: 1;
 }
 
 input[type="image"] {

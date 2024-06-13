@@ -56,10 +56,12 @@ for (let i = 0; i < smoothScrollTrigger.length; i++){
   });
 }
 
+/* 購入フォームカスタム */
 document.addEventListener("DOMContentLoaded", function() {
   const courseSelect = document.getElementById("course");
-  const select155 = document.querySelector(".select_155");
-  const select195 = document.querySelector(".select_195");
+  const sec15Form = document.querySelector(".sec15_form");
+  const select155Container = document.querySelector(".select-155-container");
+  const select195Container = document.querySelector(".select-195-container");
   const form155 = document.getElementById("form_155").querySelector('input[name="brand_info"]');
   const form195 = document.getElementById("form_195").querySelector('input[name="brand_info"]');
   const bag155Select = document.getElementById("bag_155");
@@ -78,46 +80,72 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateSelectBoxes() {
     const selectedCourse = courseSelect.value;
 
-    if (selectedCourse === "ふわりも®︎コース 1枚" ||
-        selectedCourse === "ふわりも®︎コース 2枚" ||
-        selectedCourse === "こまとめコース") {
-      select155.style.display = "flex";
-      select195.style.display = "none";
-    } else if (selectedCourse === "おまとめコース" ||
+    select155Container.classList.remove('show');
+    select195Container.classList.remove('show');
+
+    setTimeout(() => {
+      if (selectedCourse === "ふわりも®︎コース 1枚" ||
+          selectedCourse === "ふわりも®︎コース 2枚" ||
+          selectedCourse === "こまとめコース") {
+        select155Container.classList.add('show');
+        select195Container.classList.remove('show');
+      } else if (selectedCourse === "おまとめコース" ||
                 selectedCourse === "マットレス・敷ふとんコース") {
-      select155.style.display = "none";
-      select195.style.display = "flex";
-    } else {
-      select155.style.display = "none";
-      select195.style.display = "none";
-    }
-    updateFormValues();
+        select155Container.classList.remove('show');
+        select195Container.classList.add('show');
+      } else {
+        select155Container.classList.remove('show');
+        select195Container.classList.remove('show');
+      }
+      updateFormValues();
+    }, 100);  // 0.1秒後に表示を切り替える
   }
 
   function updateFormValues() {
     const selectedCourse = courseSelect.value;
     const courseValue = courseValues[selectedCourse] || "";
 
-    if (select155.style.display === "flex") {
+    if (select155Container.classList.contains('show')) {
       const bagValue = bag155Select.value;
       const visitValue = visit155Select.value;
       form155.value = `1,${courseValue},1,N,,,${bagValue},${visitValue}`;
     }
 
-    if (select195.style.display === "flex") {
+    if (select195Container.classList.contains('show')) {
       const bagValue = bag195Select.value;
       const visitValue = visit195Select.value;
       form195.value = `1,${courseValue},1,N,,,${bagValue},${visitValue}`;
     }
   }
 
+  function initializeDefaultValues() {
+    // 初期値を設定
+    bag155Select.value = bag155Select.options[0].value;
+    visit155Select.value = visit155Select.options[0].value;
+    bag195Select.value = bag195Select.options[0].value;
+    visit195Select.value = visit195Select.options[0].value;
+
+    // フォームの初期値を更新
+    updateFormValues();
+  }
+
   // 初期状態を設定
+  initializeDefaultValues();
   updateSelectBoxes();
 
   // コース選択が変更されたときに表示を更新
-  courseSelect.addEventListener("change", updateSelectBoxes);
+  courseSelect.addEventListener("change", function() {
+    if (courseSelect.value !== "") {
+      sec15Form.classList.add('height-expanded');
+      // 一度選択されたら「選択してください」オプションを無効化
+      courseSelect.options[0].disabled = true;
+    }
+    updateSelectBoxes();
+  });
+
   bag155Select.addEventListener("change", updateFormValues);
   visit155Select.addEventListener("change", updateFormValues);
   bag195Select.addEventListener("change", updateFormValues);
   visit195Select.addEventListener("change", updateFormValues);
 });
+
