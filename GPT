@@ -1,0 +1,131 @@
+<div class="sec15_form">
+  <div class="reqBox req01">
+    <label for="course">
+      ご希望のコースをお選びください。
+    </label>
+    <select name="course" id="course" required>
+      <option value="">選択してください</option>
+      <option value="ふわりも®︎コース 1枚">ふわりも&#xAE;コース 1枚</option>
+      <option value="ふわりも®︎コース 2枚">ふわりも&#xAE;コース 2枚</option>
+      <option value="こまとめコース">こまとめコース</option>
+      <option value="おまとめコース">おまとめコース</option>
+      <option value="マットレス・敷ふとんコース">マットレス・敷ふとんコース</option>
+    </select>
+  </div>
+  <div class="select_155">
+    <div class="reqBox req02">
+      <label for="bag_155">
+        「155サイズ配送袋」の有無
+      </label>
+      <select name="bag_155" id="bag_155">
+        <option value="">選択してください</option>
+        <option value="「155サイズ配送袋」を持っている">「155サイズ配送袋」を持っている</option>
+        <option value="「155サイズ配送袋」を持っていない（初回注文の方）">「155サイズ配送袋」を持っていない（初回注文の方）</option>
+      </select>
+    </div>
+    <div class="reqBox req03">
+      <label for="visit_155">
+        訪問サービスのご希望
+      </label>
+      <select name="visit_155" id="visit_155">
+        <option value="あり">あり</option>
+        <option value="なし">なし</option>
+      </select>
+    </div>
+    <div class="sec15_underCon">
+      <img src="https://gigaplus.makeshop.jp/kuramochi/cleaning_lp/images/sec15_underCon.png" alt="※訪問サービスとは、くらもちのスタッフが実際にご自宅に訪問させていただくサービスです。※東京都（23区）・神奈川県（横浜市・川崎市）が対象です。">
+    </div>
+    <form action="http://kuramochi.shop13.makeshop.jp//api/basket/add.html" method="post" accept-charset="EUC-JP">
+      <input type="hidden" name="brand_info" value="">
+      <input type="image" src="https://gigaplus.makeshop.jp/kuramochi/cleaning_lp/images/sec15_reqBtn.png" alt="申し込む">
+    </form>
+  </div>
+  <div class="select_195">
+    <div class="reqBox req02">
+      <label for="bag_195">
+        「195サイズ配送袋」の有無
+      </label>
+      <select name="bag_195" id="bag_195">
+        <option value="">選択してください</option>
+        <option value="「195サイズ配送袋」を持っている">「195サイズ配送袋」を持っている</option>
+        <option value="「195サイズ配送袋」を持っていない（初回注文の方）">「195サイズ配送袋」を持っていない（初回注文の方）</option>
+      </select>
+    </div>
+    <div class="reqBox req03">
+      <label for="visit_195">
+        訪問サービスのご希望
+      </label>
+      <select name="visit_195" id="visit_195">
+        <option value="あり">あり</option>
+        <option value="なし">なし</option>
+      </select>
+    </div>
+    <div class="sec15_underCon">
+      <img src="https://gigaplus.makeshop.jp/kuramochi/cleaning_lp/images/sec15_underCon.png" alt="※訪問サービスとは、くらもちのスタッフが実際にご自宅に訪問させていただくサービスです。※東京都（23区）・神奈川県（横浜市・川崎市）が対象です。">
+    </div>
+    <form action="http://kuramochi.shop13.makeshop.jp//api/basket/add.html" method="post" accept-charset="EUC-JP">
+      <input type="hidden" name="brand_info" value="">
+      <input type="image" src="https://gigaplus.makeshop.jp/kuramochi/cleaning_lp/images/sec15_reqBtn.png" alt="申し込む">
+    </form>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const courseSelect = document.getElementById("course");
+  const select155 = document.querySelector(".select_155");
+  const select195 = document.querySelector(".select_195");
+
+  function updateSelectBoxes() {
+    const selectedCourse = courseSelect.value;
+
+    if (selectedCourse === "ふわりも®︎コース 1枚" ||
+        selectedCourse === "ふわりも®︎コース 2枚" ||
+        selectedCourse === "こまとめコース") {
+      select155.style.display = "flex";
+      select195.style.display = "none";
+    } else if (selectedCourse === "おまとめコース" ||
+                selectedCourse === "マットレス・敷ふとんコース") {
+      select155.style.display = "none";
+      select195.style.display = "flex";
+    } else {
+      select155.style.display = "none";
+      select195.style.display = "none";
+    }
+  }
+
+  // 初期状態を設定
+  updateSelectBoxes();
+
+  // コース選択が変更されたときに表示を更新
+  courseSelect.addEventListener("change", updateSelectBoxes);
+});
+</script>
+上記を実装しています。
+.select_155と.select_195に設置されている下記ボタンのvalueをセレクトボックスでの選択によって動的に変えていきたい。
+<form action="http://kuramochi.shop13.makeshop.jp//api/basket/add.html" method="post" accept-charset="EUC-JP">
+  <input type="hidden" name="brand_info" value="">
+  <input type="image" src="https://gigaplus.makeshop.jp/kuramochi/cleaning_lp/images/sec15_reqBtn.png" alt="申し込む">
+</form>
+valueにはパターンがあり例えば
+コース名：「ふわりも®︎コース 1枚」
+「155サイズ配送袋」の有無:「155サイズ配送袋」を持っていない（初回注文の方）
+訪問サービスのご希望:あり
+であれば、
+value="1,000000000001,1,N,,,「155サイズ配送袋」を持っていない（初回注文の方）|550,あり|0"
+のようになります。
+入る値は、
+「155サイズ配送袋」を持っている|0
+「155サイズ配送袋」を持っていない（初回注文の方）|550
+「195サイズ配送袋」を持っている|0
+「195サイズ配送袋」を持っていない（初回注文の方）|550
+あり|0
+なし|0
+この6つです。
+valueの入る場所に関しては、value="1,000000000001,1,N,,,「155サイズ配送袋」を持っていない（初回注文の方）|550,あり|0"を参考にしてください。
+valueの2番目の値にも対応する値の組み合わせがあります。
+ふわりも®︎コース 1枚:000000000001
+ふわりも®︎コース 2枚:000000000002
+こまとめコース:000000000003
+おまとめコース:000000000004
+マットレス・敷ふとんコース:000000000005
+上記となります。

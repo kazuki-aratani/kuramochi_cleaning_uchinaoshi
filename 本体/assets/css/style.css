@@ -392,6 +392,16 @@ a:hover {
   width: 100%;
 }
 
+.select_155,.select_195 {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+input[type="image"] {
+  width: 100%;
+}
+
 .sec15_form label {
   display: block;
   padding-left: 40px;
