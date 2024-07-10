@@ -2,54 +2,59 @@
 <header class="header">
   <!-- ロゴ画像があれば画像、なければショップ名を表示 -->
   <h1 class="shop-name">
-      <{if $shop.logo_url}><img src="<{$shop.logo_url}>" alt="<{$shop.name}>"><{else}><p><{$shop.name}></p><{/if}>
+    <{if $shop.logo_url}><img src="<{$shop.logo_url}>" alt="<{$shop.name}>" /><{else}>
+    <p><{$shop.name}></p>
+    <{/if}>
   </h1>
   <ul class="head-btn">
-      <li class="head-btn-item head-btn-dropdown"><span class="dropdown-switch dropdown-open">メニュー</span></li>
-      <li class="head-btn-item head-btn-account">
+    <li class="head-btn-item head-btn-dropdown"><span class="dropdown-switch dropdown-open">メニュー</span></li>
+    <li class="head-btn-item head-btn-account">
       <!-- ログインしていたら -->
       <{if $member.is_logged_in}>
-          <div class="member-nav-wrap">
-              <p class="member-name"><{$member.name}>さま</p>
-              <ul class="member-nav">
-                  <li class="member-nav-item"><a href="<{$url.mypage}>">マイページ</a></li>
-                  <li class="member-nav-item"><a href="<{$url.logout}>">ログアウト</a></li>
-              </ul>
-          </div>
+      <div class="member-nav-wrap">
+        <p class="member-name"><{$member.name}>さま</p>
+        <ul class="member-nav">
+          <li class="member-nav-item"><a href="<{$url.mypage}>">マイページ</a></li>
+          <li class="member-nav-item"><a href="<{$url.logout}>">ログアウト</a></li>
+        </ul>
+      </div>
       <{else}>
-          <a href="<{$url.mypage}>" class="head-btn-login head-btn-icon">アカウント</a>
+      <a href="<{$url.mypage}>" class="head-btn-login head-btn-icon">アカウント</a>
       <{/if}>
-      </li>
-      <li class="head-btn-item head-btn-cart"><a href="<{$url.cart}>" class="head-btn-icon">カート<{if $cart.has_item}><span class="cart-badge"></span><{/if}></a></li>
+    </li>
+    <li class="head-btn-item head-btn-cart">
+      <a href="<{$url.cart}>" class="head-btn-icon">カート<{if $cart.has_item}><span class="cart-badge"></span><{/if}></a>
+    </li>
   </ul>
 </header>
 
 <nav class="dropdown-nav">
-  <div class="dropdown-wrap"><span class="dropdown-switch dropdown-close">×</span>
-      <div class="dropdown-account">
+  <div class="dropdown-wrap">
+    <span class="dropdown-switch dropdown-close">×</span>
+    <div class="dropdown-account">
       <!-- ログインしていたら -->
       <{if $member.is_logged_in}>
-          <p class="dropdown-member-name"><{$member.name}>さま</p>
-          <ul class="dropdown-member-nav">
-              <li class="dropdown-member-nav-item"><a href="<{$url.mypage}>">マイページ</a></li>
-              <li class="dropdown-member-nav-item"><a href="<{$url.logout}>">ログアウト</a></li>
-          </ul>
-      <{else}>
-          <p class="dropdown-account-login"><a href="<{$url.login}>">ログイン</a></p>
-      <{/if}>
-      </div>
-      <ul class="dropdown-list">
-          <li class="dropdown-nav-item"><a href="page/cleaning" target="_blank">ふとんクリーニング</a></li>
-          <li class="dropdown-nav-item"><a href="page/uchinaoshi" target="_blank">羽毛ふとんリフォーム</a></li>
-          <li class="dropdown-nav-item"><a href="<{$url.support}>">お問い合わせ</a></li>
+      <p class="dropdown-member-name"><{$member.name}>さま</p>
+      <ul class="dropdown-member-nav">
+        <li class="dropdown-member-nav-item"><a href="<{$url.mypage}>">マイページ</a></li>
+        <li class="dropdown-member-nav-item"><a href="<{$url.logout}>">ログアウト</a></li>
       </ul>
+      <{else}>
+      <p class="dropdown-account-login"><a href="<{$url.login}>">ログイン</a></p>
+      <{/if}>
+    </div>
+    <ul class="dropdown-list">
+      <li class="dropdown-nav-item"><a href="https://www.kuramochishingu.co.jp/view/page/cleaning" target="_blank">ふとんクリーニング</a></li>
+      <li class="dropdown-nav-item"><a href="https://www.kuramochishingu.co.jp/view/page/uchinaoshi" target="_blank">羽毛ふとんリフォーム</a></li>
+      <li class="dropdown-nav-item"><a href="<{$url.support}>">お問い合わせ</a></li>
+    </ul>
   </div>
 </nav>
 
 <nav class="nav">
   <ul class="nav-list">
-    <li class="nav-item nav-contact"><a href="page/cleaning" target="_blank">ふとんクリーニング</a></li>
-    <li class="nav-item nav-contact"><a href="page/uchinaoshi" target="_blank">羽毛ふとんリフォーム</a></li>
+    <li class="nav-item nav-contact"><a href="https://www.kuramochishingu.co.jp/view/page/cleaning" target="_blank">ふとんクリーニング</a></li>
+    <li class="nav-item nav-contact"><a href="https://www.kuramochishingu.co.jp/view/page/uchinaoshi" target="_blank">羽毛ふとんリフォーム</a></li>
     <li class="nav-item nav-contact"><a href="<{$url.support}>">お問い合わせ</a></li>
   </ul>
 </nav>

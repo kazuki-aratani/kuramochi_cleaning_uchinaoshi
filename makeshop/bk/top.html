@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title><{$page.title}></title>
+    <meta name="description" content="<{$page.description}>" />
+    <link rel="canonical" href="<{$page.canonical_url}>" />
+    <link rel="shortcut icon" type="image/ico" href="<{$shop.favicon_url}>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<{$page.title}>" />
+    <meta property="og:description" content="<{$page.description}>" />
+    <meta property="og:site_name" content="<{$shop.name}>" />
+    <meta name="twitter:card" content="Summary with Large Image" />
+    <{$makeshop.head}>
+    <link rel="stylesheet" href="<{$page.css}>" />
+  </head>
+
+  <body>
+    <{$makeshop.body_top}> <{$module.header}>
+
+    <div class="wrap">
+      <div class="main-contents">
+        <!-- トップイメージが登録されていたら -->
+        <{if $shop.mainvisual}>
+        <section class="index-image"><{$shop.mainvisual}></section>
+        <{/if}>
+
+        <section class="index-product-list">
+          <ul class="product-list">
+            <{section name=i loop=$new_item.list max=9}>
+            <li class="product-item <{if $new_item.list[i].is_soldout}>outstock<{else}>instock<{/if}>">
+              <a href="<{$new_item.list[i].url}>">
+                <figure class="product-item-image-wrap">
+                  <img src="<{$new_item.list[i].image_M}>" alt="<{$new_item.list[i].name}>" class="product-item-image" />
+                  <{if $new_item.list[i].is_soldout}><span class="status-soldout">Soldout</span><{/if}> <{if $new_item.list[i].is_sale}>
+                  <div class="badge badge-sale">
+                    <span>SALE</span>
+                  </div>
+                  <{/if}>
+                </figure>
+                <p class="product-item-name"><{$new_item.list[i].name}></p>
+                <div class="product-item-price-wrap">
+                  <{if $new_item.list[i].is_soldout}>
+                  <del class="product-item-price<{if $new_item.list[i].is_sale}> product-item-sale-price<{/if}>">￥<{$new_item.list[i].price|number_format}></del>
+                  <{else}>
+                  <span class="product-item-price<{if $new_item.list[i].is_sale}> product-item-sale-price<{/if}>">￥<{$new_item.list[i].price|number_format}></span>
+                  <{/if}> <{if $new_item.list[i].is_sale}><span class="sale-discount product-item-sale-discount"><{$new_item.list[i].sale_rate}>%OFF</span><{/if}> <{if $new_item.list[i].is_soldout}><span class="product-item-soldout">SOLD OUT</span><{/if}>
+                </div>
+              </a>
+            </li>
+            <{/section}>
+          </ul>
+        </section>
+      </div>
+
+      <{$module.footer}>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="<{$page.javascript}>"></script>
+    <{$makeshop.body_bottom}>
+  </body>
+</html>
